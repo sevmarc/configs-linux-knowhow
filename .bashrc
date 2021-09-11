@@ -26,8 +26,7 @@ fi
 
 unset rc
 
-
-####################### own aliases/functions #####################
+# own aliases/functions
 cdl () {
 	cd "$1" && ls -alh;
 }
@@ -36,22 +35,8 @@ cdrun () {
 	( cd "$1" && shift && command "$@" )
 }
 
-#copy and go to dir
-cpg (){
-  if [ -d "$2" ];then
-    cp $1 $2 && cd $2
-  else
-    cp $1 $2
-  fi
-}
-
-#move and go to dir
-mvg (){
-  if [ -d "$2" ];then
-    mv $1 $2 && cd $2
-  else
-    mv $1 $2
-  fi
+mkdircd () {
+  mkdir "$1" && cd "$1";
 }
 
 # the size (sorted) of only the folders in this directory
@@ -94,6 +79,24 @@ echo "${myip}"
 echo "---------------------------------------------------"
 }
 
+
+#copy and go to dir
+cpg (){
+  if [ -d "$2" ];then
+    cp $1 $2 && cd $2
+  else
+    cp $1 $2
+  fi
+}
+
+#move and go to dir
+mvg (){
+  if [ -d "$2" ];then
+    mv $1 $2 && cd $2
+  else
+    mv $1 $2
+  fi
+}
 
 # Directory navigation aliases
 alias ..='cd ..'
