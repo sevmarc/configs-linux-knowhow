@@ -1,0 +1,57 @@
+SSH login format:
+bandit<X> -> bandit<X+1>
+    ssh -p 2220 -l bandit<X+1> bandit.labs.overthewire.org
+    pass
+
+
+Notes:
+bandit0:
+ssh -p 2220 -l bandit0 bandit.labs.overthewire.org
+
+bandit1:
+ls
+cat readme
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+exit
+
+bandit2:
+google: "dashed filename" -> need full location
+cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+bandit3:
+google "spaces in filenames" -> https://askubuntu.com/questions/516772/how-to-access-files-directories-with-spaces-in-the-name
+
+cat spaces\ in\ this\ filename
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+bandit4:
+cd inhere
+cat .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+bandit5:
+cd inhere
+file <filename> -> many data, 1 ASCII text file -> pass
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+
+bandit6:
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+human-readable
+1033 bytes in size
+not executable
+--------------
+find ./inhere/ -type f -size 1033c -exec ls {} \;
+looking inside folder 'inhere', for file with size 1033 bytes, and listing results
+As units you can use:
+    b - for 512-byte blocks (this is the default if no suffix is used)
+    c - for bytes
+    w - for two-byte words
+    k - for Kilobytes (units of 1024 bytes)
+    M - for Megabytes (units of 1048576 bytes)
+    G - for Gigabytes (units of 1073741824 bytes)
+
+cat ./inhere/maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
