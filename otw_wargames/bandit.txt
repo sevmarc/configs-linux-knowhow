@@ -75,3 +75,15 @@ grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
 
 grep "millionth" data.txt
 cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+
+bandit9:
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+
+hint: https://ryanstutorials.net/linuxtutorial/piping.php
+uniq: when fed a text file or STDIN, outputs the text with adjacent identical lines collapsed to one, unique line of text
+
+"Piping the output into sort organises the output into alphabetical/numerical order. This is a requirement because uniq only matches on repeated lines"
+
+sort data.txt | uniq -c | grep "1 " -> 1 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
