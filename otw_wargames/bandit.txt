@@ -320,6 +320,8 @@ if [ "$SHLVL" = 1 ]; then
 fi
 
 solution: ssh -p 2220 -l bandit18 bandit.labs.overthewire.org "cat ~/readme"
+solution2: ssh -t bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh
+-> $SHLVL increased, won't log us out
 
 pass: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 
