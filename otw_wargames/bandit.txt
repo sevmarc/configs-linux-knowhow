@@ -2,38 +2,43 @@ SSH login format:
 bandit<X> -> bandit<X+1>
     ssh -p 2220 -l bandit<X+1> bandit.labs.overthewire.org
     pass
-
+#################################################################
 
 Notes:
 bandit0:
-ssh -p 2220 -l bandit0 bandit.labs.overthewire.org
+    ssh -p 2220 -l bandit0 bandit.labs.overthewire.org
+
 
 bandit1:
-ls
-cat readme
-boJ9jbbUNNfktd78OOpsqOltutMc3MY1
-exit
+    ls
+    cat readme
+    boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+    exit
+
 
 bandit2:
-google: "dashed filename" -> need full location
-cat ./-
-CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+    google: "dashed filename" -> need full location
+    cat ./-
+    CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
 
 bandit3:
-google "spaces in filenames" -> https://askubuntu.com/questions/516772/how-to-access-files-directories-with-spaces-in-the-name
+    google "spaces in filenames" -> https://askubuntu.com/questions/516772/how-to-access-files-directories-with-spaces-in-the-name
 
-cat spaces\ in\ this\ filename
-UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+    cat spaces\ in\ this\ filename
+    UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
 
 bandit4:
-cd inhere
-cat .hidden
-pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+    cd inhere
+    cat .hidden
+    pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
 
 bandit5:
-cd inhere
-file <filename> -> many data, 1 ASCII text file -> pass
-koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+    cd inhere
+    file <filename> -> many data, 1 ASCII text file -> pass
+    koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
 
 bandit6:
@@ -43,18 +48,18 @@ The password for the next level is stored in a file somewhere under the inhere d
 - 1033 bytes in size
 - not executable
 --------------
-find ./inhere/ -type f -size 1033c -exec ls {} \;
-looking inside folder 'inhere', for file with size 1033 bytes, and listing results
-As units you can use:
-    b - for 512-byte blocks (this is the default if no suffix is used)
-    c - for bytes
-    w - for two-byte words
-    k - for Kilobytes (units of 1024 bytes)
-    M - for Megabytes (units of 1048576 bytes)
-    G - for Gigabytes (units of 1073741824 bytes)
+    find ./inhere/ -type f -size 1033c -exec ls {} \;
+    looking inside folder 'inhere', for file with size 1033 bytes, and listing results
+    As units you can use:
+        b - for 512-byte blocks (this is the default if no suffix is used)
+        c - for bytes
+        w - for two-byte words
+        k - for Kilobytes (units of 1024 bytes)
+        M - for Megabytes (units of 1048576 bytes)
+        G - for Gigabytes (units of 1073741824 bytes)
 
-cat ./inhere/maybehere07/.file2
-DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+    cat ./inhere/maybehere07/.file2
+    DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 
 
 bandit7:
@@ -62,10 +67,10 @@ bandit7:
 - owned by group bandit6
 - 33 bytes in size
 
-find / -user bandit7 -group bandit6 -type f -size 33c 2>/dev/null
-    2>/dev/null = errors supressed ('Permission denied')
-cat /var/lib/dpkg/info/bandit7.password
-HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+    find / -user bandit7 -group bandit6 -type f -size 33c 2>/dev/null
+        2>/dev/null = errors supressed ('Permission denied')
+    cat /var/lib/dpkg/info/bandit7.password
+    HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
 
 
 bandit8:
@@ -73,8 +78,8 @@ bandit8:
 Commands you may need to solve this level
 grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
 
-grep "millionth" data.txt
-cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+    grep "millionth" data.txt
+    cvX2JJa4CFALtqS87jk27qwqGhBM9plV
 
 
 bandit9:
@@ -85,76 +90,76 @@ uniq: when fed a text file or STDIN, outputs the text with adjacent identical li
 
 "Piping the output into sort organises the output into alphabetical/numerical order. This is a requirement because uniq only matches on repeated lines"
 
-sort data.txt | uniq -c | grep "1 " -> 1 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+    sort data.txt | uniq -c | grep "1 " -> 1 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 
 
 bandit10:
 The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
 
-strings data.txt | grep "===" ->
-========== the*2i"4
-========== password
-Z)========== is
-&========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+    strings data.txt | grep "===" ->
+    ========== the*2i"4
+    ========== password
+    Z)========== is
+    &========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
 
 
 bandit11:
 The password for the next level is stored in the file data.txt, which contains base64 encoded data
 
-file data.txt -> data.txt: ASCII text
-cat data.txt -> VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==
-base64 -d data.txt -> The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+    file data.txt -> data.txt: ASCII text
+    cat data.txt -> VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==
+    base64 -d data.txt -> The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 
 
 bandit12:
 The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions.
 using cybersecurity/cryptography/cryptoanalysis tool:
-Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
-The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+    Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+    The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 
 
 bandit13:
 The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
 help: https://en.wikipedia.org/wiki/Hex_dump
 
-renaming tp hex (hexdump)
-    mv data.txt data.hex 
-return original text from hexdump
-    xxd -r data.hex data.txt
-    inspection: file data.txt -> 
-    data.txt: gzip compressed data, was "data2.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
-decompress
-    gzip -d data.txt
-    file data -> data: bzip2 compressed data, block size = 900k
-    mv data.gz data.bz2
-decompress (second layer)
-    bzip2 -d data.bz2
-    inspection: file data -> data: gzip compressed data, was "data4.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
-decompress (third layer)
-    mv data data.gz
-    gzip -d data.gz
-    inspection: file data ->   data: POSIX tar archive (GNU)
-decompress (fourth layer)
-    mv data data.tar.gz
-    tar -xf data.tar.gz
-    inspection: file data5.bin -> POSIX tar archive (GNU)
-decompress (fifth layer)    
-    mv data5.bin data5.tar.gz
-    tar -xf data5.tar.gz
-    inspection: file data6.bin -> data6.bin: bzip2 compressed data, block size = 900k
-decompress (sixth layer)
-    mv data6.bin data6.bz2
-    bzip2 -d data6.bz2 -> data6
-    inspection: file data6 -> data6: POSIX tar archive (GNU)
-decompress (seventh layer)
-    mv data6 data7.tar.gz
-    tar -xf data7.tar.gz -> data8.bin
-    inspection: file data8.bin -> gzip compressed data, was "data9.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
-decompress (eigth layer)
-    mv data8.bin data9.gz
-    inspection: file data9 -> data9: ASCII text
-cat data9 -> 
-The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+    renaming tp hex (hexdump)
+        mv data.txt data.hex 
+    return original text from hexdump
+        xxd -r data.hex data.txt
+        inspection: file data.txt -> 
+        data.txt: gzip compressed data, was "data2.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+    decompress
+        gzip -d data.txt
+        file data -> data: bzip2 compressed data, block size = 900k
+        mv data.gz data.bz2
+    decompress (second layer)
+        bzip2 -d data.bz2
+        inspection: file data -> data: gzip compressed data, was "data4.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+    decompress (third layer)
+        mv data data.gz
+        gzip -d data.gz
+        inspection: file data ->   data: POSIX tar archive (GNU)
+    decompress (fourth layer)
+        mv data data.tar.gz
+        tar -xf data.tar.gz
+        inspection: file data5.bin -> POSIX tar archive (GNU)
+    decompress (fifth layer)    
+        mv data5.bin data5.tar.gz
+        tar -xf data5.tar.gz
+        inspection: file data6.bin -> data6.bin: bzip2 compressed data, block size = 900k
+    decompress (sixth layer)
+        mv data6.bin data6.bz2
+        bzip2 -d data6.bz2 -> data6
+        inspection: file data6 -> data6: POSIX tar archive (GNU)
+    decompress (seventh layer)
+        mv data6 data7.tar.gz
+        tar -xf data7.tar.gz -> data8.bin
+        inspection: file data8.bin -> gzip compressed data, was "data9.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+    decompress (eigth layer)
+        mv data8.bin data9.gz
+        inspection: file data9 -> data9: ASCII text
+    cat data9 -> 
+    The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 
 
 bandit14:
@@ -162,9 +167,9 @@ The password for the next level is stored in /etc/bandit_pass/bandit14 and can o
 
 hint: https://help.ubuntu.com/community/SSH/OpenSSH/Keys
 
-ssh bandit14@localhost -i sshkey.private
-cat /etc/bandit_pass/bandit14
-4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+    ssh bandit14@localhost -i sshkey.private
+    cat /etc/bandit_pass/bandit14
+    4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
 
 
 bandit15:
@@ -172,11 +177,11 @@ The password for the next level can be retrieved by submitting the password of t
 
 hint: ssh, telnet, nc, openssl, s_client, nmap
 
-nc = netcat (TCP, UDP, or UNIX-domain sockets)
+    nc = netcat (TCP, UDP, or UNIX-domain sockets)
 
-echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 30000
-Correct!
-BfMYroe26WYalil77FoDi9qh59eK5xNr
+    echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 30000
+    Correct!
+    BfMYroe26WYalil77FoDi9qh59eK5xNr
 
 
 bandit16:
@@ -189,8 +194,8 @@ hints:
 https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0,_2.0,_and_3.0
 https://www.feistyduck.com/library/openssl-cookbook/online/ch-testing-with-openssl.html
 
-echo "BfMYroe26WYalil77FoDi9qh59eK5xNr" | openssl s_client -connect localhost:30001 -ign_eof
-cluFn7wTiGryunymYOu4RcffSxQluehd
+    echo "BfMYroe26WYalil77FoDi9qh59eK5xNr" | openssl s_client -connect localhost:30001 -ign_eof
+    cluFn7wTiGryunymYOu4RcffSxQluehd
 
 
 bandit17:
@@ -286,10 +291,10 @@ It is required that your private key files are NOT accessible by others.
 This private key will be ignored.
 Load key "bandit17.private": bad permissions
 
-chmod 400 sshkey.private (0b 110 010 000)
+    chmod 400 sshkey.private (0b 110 010 000)
 
-cat /etc/bandit_pass/bandit17
-xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+    cat /etc/bandit_pass/bandit17
+    xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
 
 
 bandit18:
@@ -301,11 +306,11 @@ Commands you may need to solve this level
 cat, grep, ls, diff
 
 
-diff passwords.old passwords.new
-42c42
-< w0Yfolrc5bwjS4qw5mq1nnQi6mF03bii
----
-> kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+    diff passwords.old passwords.new
+    42c42
+    < w0Yfolrc5bwjS4qw5mq1nnQi6mF03bii
+    ---
+    > kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 
 
 bandit19:
@@ -319,15 +324,46 @@ if [ "$SHLVL" = 1 ]; then
     [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
 fi
 
-solution: ssh -p 2220 -l bandit18 bandit.labs.overthewire.org "cat ~/readme"
-solution2: ssh -t bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh
--> $SHLVL increased, won't log us out
+    solution: ssh -p 2220 -l bandit18 bandit.labs.overthewire.org "cat ~/readme"
+    solution2: ssh -t bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh
+    -> $SHLVL increased, won't log us out
 
-pass: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+    pass: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 
 
 bandit20:
 To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
 
 Helpful Reading Material: https://en.wikipedia.org/wiki/Setuid
+
+bandit19@bandit:~$ file bandit20-do 
+bandit20-do: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8e941f24b8c5cd0af67b22b724c57e1ab92a92a1, not stripped
+"The red highlight signifies that this file has elevated permissions. Hence, any commands executing with ./bandit20-do will run as user bandit20 instead of bandit19."
+
+
+bandit19@bandit:~$ id
+uid=11019(bandit19) gid=11019(bandit19) groups=11019(bandit19)
+bandit19@bandit:~$ which sudo
+/usr/bin/sudo
+bandit19@bandit:~$ ls -l /usr/bin/sudo 
+-rwxr-xr-x 1 root root 140944 Jan 31  2020 /usr/bin/sudo
+
+Execution:
+bandit19@bandit:~$ ./bandit20-do 
+Run a command as another user.
+  Example: ./bandit20-do id
+bandit19@bandit:~$ ./bandit20-do id
+uid=11019(bandit19) gid=11019(bandit19) euid=11020(bandit20) groups=11019(bandit19)
+
+bandit19@bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+
+bandit21:
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+
+NOTE: Try connecting to your own network daemon to see if it works as you think
+
+Commands you may need to solve this level
+ssh, nc, cat, bash, screen, tmux, Unix ‘job control’ (bg, fg, jobs, &, CTRL-Z, …)
 
