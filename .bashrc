@@ -108,6 +108,10 @@ alias back='cd $OLDPWD'
 alias ..='cd ..'
 
 # Prompt
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 BGREEN='\[\033[1;32m\]'
 GREEN='\[\033[0;32m\]'
 BRED='\[\033[1;31m\]'
@@ -115,7 +119,7 @@ RED='\[\033[0;31m\]'
 BBLUE='\[\033[1;34m\]'
 BLUE='\[\033[0;34m\]'
 NORMAL='\[\033[00m\]'
-PS1="${BLUE}(${RED}\w${BLUE}) ${NORMAL}\h ${RED}\$ ${NORMAL}"
+PS1="${BLUE}(${RED}\w${BLUE}) ${NORMAL}\h ${RED} $(parse_git_branch)\$ ${NORMAL}"
 
 
 # enable color support of ls and also add handy aliases
@@ -125,3 +129,15 @@ if [ "$TERM" != "dumb" ]; then
     alias dir='ls --color=auto --format=vertical'
     alias vdir='ls --color=auto --format=long'
 fi
+
+# git commands
+
+# git config --global alias.st 'status -sb'
+# git config --global alias.ll 'log --oneline'
+# git config --global alias.last 'log -l HEAD --stat'
+# git config --global alias.cm 'commit -m'
+# git config --global alias.rv 'remote -v'
+# git config --global alias.d 'diff'
+# git config --global alias.dv 'difftool -t vimdiff -y'
+# git config --global alias.gk 'config --global -l'
+# git config --global alias.se '!git rev-list --all | xargs git grep -F'
